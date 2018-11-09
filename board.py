@@ -53,9 +53,9 @@ class Board:
             self.tictac(beginBlock[0], beginBlock[1])
         elif nplayers == 1:
             # computer made the first movement
-            print("movement by computer")
             (x,y) = self.__calculateBestMovement__()
-            self.tictac(x,y)  
+            print("movement by computer: (%d, %d)" % (x,y))
+            self.tictac(x,y)
     
     def tictac(self, x, y):
         playerId = self.counter % 2
