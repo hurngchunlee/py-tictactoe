@@ -139,8 +139,9 @@ class Board:
         return self.__str__()
 
     def __str__(self):
-        s = "-" * (2*self.dimension + 1) + "\n"
+        s =  " "*4 + " ".join(str(i+1) for i in xrange(self.dimension)) + "\n" 
+        s += " "*3 + "-"*(2*self.dimension+1) + "\n"
         for i in xrange(self.dimension):
-            s += "|" + "|".join(self.blocks[i]) + "|\n"
-            s += "-" * (2*self.dimension + 1) + "\n"
+            s += "{0:>2} ".format(str(i+1)) + "|" + "|".join(self.blocks[i]) + "|\n"
+            s += " "*3 + "-"*(2*self.dimension+1) + "\n"
         return s
