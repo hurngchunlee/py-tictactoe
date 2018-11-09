@@ -82,15 +82,19 @@ class Board:
             pass
 
     def isToe(self):
+
+        # toes contains strings of winning conditions
+        toes = map(lambda x:x*self.dimension, self.players)
+
         # check row
         for i in xrange(self.dimension):
-            if ''.join(self.blocks[i]) in [ 'X' * self.dimension, 'O' * self.dimension ]:
+            if ''.join(self.blocks[i]) in toes:
                 return True
 
         # check colume
         for i in xrange(self.dimension):
             bcol = map(lambda x:x[i], self.blocks)
-            if ''.join( bcol ) in [ 'X' * self.dimension, 'O' * self.dimension]:
+            if ''.join( bcol ) in toes:
                 return True
 
         # check diagnoal
@@ -99,10 +103,10 @@ class Board:
         for i in xrange(self.dimension):
             bdiagf.append(self.blocks[i][i])
             bdiagb.append(self.blocks[i][self.dimension-i-1])
-        if ''.join( bdiagf ) in [ 'X' * self.dimension, 'O' * self.dimension]:
+        if ''.join( bdiagf ) in toes:
             return True
 
-        if ''.join( bdiagb ) in [ 'X' * self.dimension, 'O' * self.dimension]:
+        if ''.join( bdiagb ) in toes:
             return True
 
         return False
